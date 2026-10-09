@@ -1,11 +1,18 @@
 package View;
 
+import Model.Produto;
+import Service.Operacoes;
+
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        Operacoes op = new Operacoes();
+        List<Produto> produtos = new ArrayList<Produto>();
         while (true) {
             System.out.println("Selecione a opção para continuar:");
             System.out.println("1 - Cadastrar produto");
@@ -29,23 +36,28 @@ public class App {
             }
             switch (menu) {
                 case 1:
-                    //chamaOp
+                    System.out.println("Cadastrar produto ");
+                    String nome = op.nomearProduto(sc);
+                    String descricao = op.descreverProduto(sc);
+                    double valor = op.precificarProduto(sc);
+                    Produto produto = new Produto(nome, descricao, valor);
+                    produtos.add(produto);
                     break;
                 case 2:
-                    //chamaOp
+                    op.listarProdutos(produtos);
                     break;
                 case 3:
-                    //chamaOp
+                    op.procurarProduto(sc,produtos);
                     break;
                 case 4:
-                    //chamaOp
+                    op.atualizarProduto(sc,produtos);
                     break;
                 case 5:
-                    //chamaOp
+                    op.excluirProduto(sc,produtos);
                     break;
                 case 0:
-                    //chamaOp
-                    break;
+                    System.out.println("Saindo");
+                    return;
             }
 
         }

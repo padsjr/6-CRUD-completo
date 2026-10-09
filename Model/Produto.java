@@ -43,6 +43,9 @@ public class Produto {
         this.preco = preco;
     }
 
+    public Produto() {
+    }
+
     @Override
     public String toString() {
         return "Produto " +
